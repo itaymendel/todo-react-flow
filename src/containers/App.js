@@ -1,5 +1,6 @@
+// @flow
+
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { default as AppLayout } from '../components/Layout/App';
@@ -14,19 +15,19 @@ import { LoadStateLocalStorage } from '../actions/LoadStateLocalStorage';
 import { SaveStateLocalStorage } from '../actions/SaveStateLocalStorage';
 import { ReorderItem } from '../actions/ReorderItem';
 
-const appPropTypes = {
-  handleAddItem: PropTypes.func.isRequired,
-  handleCancelEditItem: PropTypes.func.isRequired,
-  handleDeleteItem: PropTypes.func.isRequired,
-  handleEditItem: PropTypes.func.isRequired,
-  handleItemCompletion: PropTypes.func.isRequired,
-  handleSelectEditItem: PropTypes.func.isRequired,
-  handleLoadStateLocalStorage: PropTypes.func.isRequired,
-  handleSaveStateLocalStorage: PropTypes.func.isRequired,
-  handleReorderItem: PropTypes.func.isRequired,
+type Props = {
+  handleAddItem: Function,
+  handleCancelEditItem: Function,
+  handleDeleteItem: Function,
+  handleEditItem: Function,
+  handleItemCompletion: Function,
+  handleSelectEditItem: Function,
+  handleLoadStateLocalStorage: Function,
+  handleSaveStateLocalStorage: Function,
+  handleReorderItem: Function,
 };
 
-class App extends Component {
+class App extends Component<Props> {
   componentDidMount = () => this.props.handleLoadStateLocalStorage();
   componentDidUpdate = () => this.props.handleSaveStateLocalStorage(this.props.items);
 
@@ -60,8 +61,6 @@ const mapDispatchToProps = {
   handleLoadStateLocalStorage: LoadStateLocalStorage,
   handleReorderItem: ReorderItem,
 };
-
-App.propTypes = appPropTypes;
 
 export default connect(
   mapStateToProps,

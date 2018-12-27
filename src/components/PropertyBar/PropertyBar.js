@@ -1,17 +1,18 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import './PropertyBar.css';
 
-const propertyBarPropTypes = {
-  id: PropTypes.string.isRequired,
-  handleSelectEditItem: PropTypes.func.isRequired,
-  handleDeleteItem: PropTypes.func.isRequired,
+type Props = {
+  id: string,
+  handleSelectEditItem: Function,
+  handleDeleteItem: Function
 };
 
-const PropertyBar = props => (
+const PropertyBar = (props: Props) => (
   <div className="property_bar__component">
     <button
       className="btn btn-secondary property_bar__button"
@@ -23,7 +24,5 @@ const PropertyBar = props => (
     </button>
   </div>
 );
-
-PropertyBar.propTypes = propertyBarPropTypes;
 
 export default PropertyBar;

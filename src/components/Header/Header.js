@@ -1,15 +1,16 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faListAlt } from '@fortawesome/free-solid-svg-icons';
 
 import './Header.css';
 
-const headerPropTypes = {
-  className: PropTypes.string.isRequired,
+type Props = {
+  className: string
 };
 
-const Header = ({ className }) => (
+const Header = ({ className }: Props) => (
   <div className={className}>
     <div className="header__container">
       <nav className="navbar">
@@ -21,7 +22,5 @@ const Header = ({ className }) => (
     </div>
   </div>
 );
-
-Header.propTypes = headerPropTypes;
 
 export default Header;

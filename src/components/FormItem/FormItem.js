@@ -1,22 +1,21 @@
+// @flow
+
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import './FormItem.css';
 
 import PropertyBar from '../PropertyBar/PropertyBar';
 import Checkout from '../Checkout/Checkout';
+import type Item from '../../types/Item';
 
-export default class FormItem extends Component {
-  static propTypes = {
-    item: PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-      completed: PropTypes.bool.isRequired,
-    }),
-    handleDeleteItem: PropTypes.func.isRequired,
-    handleSelectEditItem: PropTypes.func.isRequired,
-    handleItemCompletion: PropTypes.func.isRequired,
-  };
+type Props = {
+  item: Item,
+  handleDeleteItem: Function,
+  handleSelectEditItem: Function,
+  handleItemCompletion: Function
+};
+
+export default class FormItem extends Component<Props, {displayMenu: boolean}> {
 
   state = { displayMenu: false };
 

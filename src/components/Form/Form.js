@@ -1,13 +1,15 @@
+// @flow
+
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-export default class Form extends Component {
-  static propTypes = {
-    handleAddItem: PropTypes.func.isRequired,
-  };
+type Props = {
+  handleAddItem: Function
+};
+
+export default class Form extends Component<Props, {itemValue: string}> {
 
   state = { itemValue: '' };
 

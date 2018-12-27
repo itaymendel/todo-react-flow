@@ -1,19 +1,18 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import './Footer.css';
 
-const footerPropTypes = {
-  className: PropTypes.string.isRequired,
+type Props = {
+  className: string,
 };
 
-const Footer = ({ className }) => (
+const Footer = ({ className }: Props) => (
   <div className={className}>
     <div className="footer__container">
     </div>
   </div>
 );
-
-Footer.propTypes = footerPropTypes;
 
 export default Footer;

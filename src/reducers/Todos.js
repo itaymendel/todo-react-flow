@@ -1,3 +1,5 @@
+// @flow
+
 import uuid from 'uuid/v1';
 
 import { LOCALSTORAGE_NAME } from '../constants';
@@ -12,11 +14,18 @@ import { LOAD_STATE_LOCALSTORAGE } from '../actions/LoadStateLocalStorage';
 import { SAVE_STATE_LOCALSTORAGE } from '../actions/SaveStateLocalStorage';
 import { REORDER_ITEM } from '../actions/ReorderItem';
 
+import type Item from '../types/Item';
+
+type State = {
+  items: Array<Item>,
+  editingItem?: Item
+}
+
 const INITIAL_STATE = {
   items: [],
 };
 
-const TodosReducer = (state = INITIAL_STATE, action) => {
+const TodosReducer = (state: State = INITIAL_STATE, action: any): State => {
   switch (action.type) {
     case LOAD_STATE_LOCALSTORAGE: {
       const localStorageState = JSON.parse(window.localStorage.getItem(LOCALSTORAGE_NAME));

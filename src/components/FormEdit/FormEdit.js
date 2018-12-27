@@ -1,20 +1,19 @@
+// @flow
+
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import type Item from '../../types/Item';
 
 import './FormEdit.css';
 
-export default class FormEdit extends Component {
-  static propTypes = {
-    item: PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-      completed: PropTypes.bool.isRequired,
-    }),
-    handleEditItem: PropTypes.func.isRequired,
-    handleCancelEditItem: PropTypes.func.isRequired,
-  };
+type Props = {
+  item: Item,
+  handleEditItem: Function,
+    handleCancelEditItem: Function
+}
+
+export default class FormEdit extends Component<Props, {itemValue: string}> {
 
   constructor(props) {
     super(props);
